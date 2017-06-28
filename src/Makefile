@@ -80,5 +80,5 @@ clean:
 		echo "making clean" "in $(CURRENT_DIR)/$$i..."; \
 		$(MAKE) -C $$i clean; \
 	done
-	-rm -f *.lo libfirewall.la $(TYPELIB_FILE) $(GIR_FILE) *~
+	-rm -f *.lo *.o libfirewall.la $(TYPELIB_FILE) $(GIR_FILE) *~
 	-rm -rf .libs
