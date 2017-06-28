@@ -1,0 +1,71 @@
+zone
+  {add | remove | query}
+    (--timeout & --force valid only with 'add')
+    service <service> [--permanent | --runtime] [--zone=] [--timeout=]
+    port <portid[-portid]/protocol> [--permanent | --runtime] [--zone=] [--timeout=]
+    icmp-block <icmp-type> [--permanent | --runtime] [--zone=] [--timeout=]
+    forward-port <portid[-portid]/protocol> [--toport=portid[-portid]] [--toaddr=address[/mask]]
+                     [--permanent | --runtime] [--zone=] [--timeout=]
+    masquerade [--permanent | --runtime] [--zone=] [--timeout=]
+    rich-rule <'rule'> [--permanent | --runtime] [--zone=] [--timeout=]
+    interface <interface> [--permanent | --runtime] [--zone=] [--force]
+    source <source[/mask]> [--permanent | --runtime] [--zone=] [--force]
+  list
+    all [{--permanent | --runtime}] [--zone=]
+    all-zones  [{--permanent | --runtime}]
+    services [{--permanent | --runtime}] [--zone=]
+    ports [{--permanent | --runtime}] [--zone=]
+    icmp-blocks [{--permanent | --runtime}] [--zone=]
+    forward-ports [{--permanent | --runtime}] [--zone=]
+    rich-rules [{--permanent | --runtime}] [--zone=]
+    interfaces [{--permanent | --runtime}] [--zone=]
+    sources [{--permanent | --runtime}] [--zone=]
+  get
+    default-zone
+    active-zones
+    zone-of-interface <interface>  [{--permanent | --runtime}]
+    zone-of-source <source>  [{--permanent | --runtime}]
+    zones [{--permanent | --runtime}]
+    services [{--permanent | --runtime}]
+    icmptypes [{--permanent | --runtime}]
+    service-details --service=  (RHBZ#1184232)
+    target (permanent only) [--zone=]
+  set
+    default-zone <zone>
+    target (permanent only) --target= [--zone=]
+  {new | delete }  (permanent only)
+    {zone | service | icmptype} <name>
+
+direct
+  {add | remove | query}
+    chain  [--permanent | --runtime]  --tool={ipv4 | ipv6 | eb} --table= --chain=
+    rule  [--permanent | --runtime]  --tool={ipv4 | ipv6 | eb} --table= --chain= --priority= args
+    rules  [--permanent | --runtime]  --tool={ipv4 | ipv6 | eb} --table= --chain=       (only with 'remove')
+    passthrough   [--permanent | --runtime] --tool={ipv4 | ipv6 | eb} args
+  get
+     all-chains [{--permanent | --runtime}]
+     chains [{--permanent | --runtime}]  --tool={ipv4 | ipv6 | eb} --table=
+     all-rules [{--permanent | --runtime}]
+     rules [{--permanent | --runtime}]  --tool={ipv4 | ipv6 | eb} --table= --chain=
+     all-passthroughs [{--permanent | --runtime}]
+     passthroughs [{--permanent | --runtime}]  --tool={ipv4 | ipv6 | eb}
+  passthrough --tool={ipv4 | ipv6 | eb} args
+
+lockdown-whitelist
+  {add | remove | query}
+    {command | context | uid | user} <value> [--permanent | --runtime]
+  list
+    {commands | contexts | uids | users} [{--permanent | --runtime}]
+
+state
+  state
+  reload
+  complete-reload
+  panic
+    {on | off | query}
+  runtime-to-permanent
+
+help
+
+-v/--version
+-q/--quiet

@@ -1,0 +1,58 @@
+README for libfirewall
+======================
+
+libfirewall provides a gobject introspection interface for firewalld. It is an
+alternative to firewall.client provided by firewalld.
+
+The library is in alpha state and provides methods and structures to query
+existing configuration and to mdify it. But there is no support for the D-Bus
+signals that firewalld sends out, yet.
+
+
+Development
+-----------
+To check out the source repository, you can use:
+
+  git clone https://github.com/firewalld/libfirewall.git
+
+This will create a local copy of the repository.
+
+
+Working With The Source Repository
+----------------------------------
+You can use the source repository directly to test out changes. Change into the 
+firewalld base directory and set the following environment variables.
+
+  export LIBFIREWALL_DEVEL_ENV=$(pwd)/src
+  export GI_TYPELIB_PATH=$LIBFIREWALL_DEVEL_ENV
+  export LD_LIBRARY_PATH=$LIBFIREWALL_DEVEL_ENV/.libs
+
+
+Install the following requirements or packages:
+
+  glib2-devel
+  gobject-introspection-devel
+
+
+Use
+
+  make
+
+to create the libraryies, the tests and also the programs in contrib.
+
+Now you are done.
+
+
+Links
+-----
+Homepage:          http://www.firewalld.org
+Report a bug:      https://github.com/firewalld/libfirewall/issues
+Git repo browser:  https://github.com/firewalld/libfirewall
+Git repo:          https://github.com/firewalld/libfirewall.git
+
+
+Directory Structure
+-------------------
+contrib/                Contrib applications like firewallctl
+src/                    Source tree
+src/tests/              Test applications and scripts
